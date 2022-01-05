@@ -25,11 +25,8 @@ Route::group([
     Route::post('login', '\App\Http\Controllers\AuthController@login');
     Route::post('registration', '\App\Http\Controllers\AuthController@registration');
     Route::post('logout', '\App\Http\Controllers\AuthController@logout');
-    Route::post('fuck_off', '\App\Http\Controllers\AuthController@fuck_off');
     Route::post('refresh', '\App\Http\Controllers\AuthController@refresh');
     Route::post('me', '\App\Http\Controllers\AuthController@me');
 });
 
-Route::group(['middleware' => 'jwt.auth', 'prefix' => '/test', ], function() {
-    Route::post('proba', '\App\Http\Controllers\Proba@send');
-});
+Route::resource('/posts', \App\Http\Controllers\PostsController::class)->only(['index', 'store', 'update', 'destroy']);

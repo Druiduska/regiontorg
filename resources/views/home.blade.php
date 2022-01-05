@@ -25,6 +25,8 @@
         </style>
     </head>
     <body>
+    {{method_field('PATCH')}}
+    {{method_field('PUT')}}
         <div id="app_login" class="login_container">
             <div class="login_button">
                 <button onclick="f_enter()">Enter</button>

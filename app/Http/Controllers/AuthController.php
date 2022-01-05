@@ -18,7 +18,6 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login', 'registration', 'refresh']]);
     }
-
     /**
      * Get a JWT via given credentials.
      * @param LoginRequest $request
@@ -26,7 +25,6 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-//        $credentials = request(['name', 'email', 'password']);
         $credentials = $request->toArray();
 
         if (! $token = auth()->attempt($credentials)) {
@@ -44,7 +42,6 @@ class AuthController extends Controller
      */
     public function registration(RegistrationRequest $request)
     {
-//        try {
             $credentials = $request->toArray();
             $user = new User();
             $user->username = $credentials['username'];
@@ -54,9 +51,6 @@ class AuthController extends Controller
             $user->save();
 
             return response()->json(['message' => 'Successfully registration!', 'code' => 0]);
-//        }catch (\Exception $exception){
-//            return response($exception->getMessage());
-//        }
     }
 
     /**
